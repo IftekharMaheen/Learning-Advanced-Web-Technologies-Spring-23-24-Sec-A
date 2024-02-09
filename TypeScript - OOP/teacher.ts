@@ -1,3 +1,5 @@
+import { course } from "./course";
+
 export class teacher {
     private teacherId: String;
     private teacherName: String;
@@ -10,5 +12,10 @@ export class teacher {
     showTeacherDetails() : void {
         console.log("Teacher ID: ", this.teacherId);
         console.log("Teacher Name: ", this.teacherName);
+    }
+
+    createCourse(courseId: String, courseName: String) : course {
+        let newCourseObj = new course(courseId, courseName, this.teacherName);
+        return newCourseObj;
     }
 }
