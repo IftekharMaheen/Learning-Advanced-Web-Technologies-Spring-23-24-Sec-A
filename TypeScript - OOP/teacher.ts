@@ -18,4 +18,6 @@ export class teacher {
         let newCourseObj = new course(courseId, courseName, this.teacherName);
         return newCourseObj;
     }
+
+    
 }
