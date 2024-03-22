@@ -2,6 +2,7 @@ import { ScheduleMgt } from 'src/entities/schedule-mgt.entity';
 import { AuthenticationEntity } from './src/auth/entities/auth.entity';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { PatientPrescription } from 'src/entities/patient-prescription.entity';
+import { AppointmentList } from 'src/entities/doctor-appointment-list.entity';
 
 const config: PostgresConnectionOptions = {
   type: 'postgres',
@@ -12,7 +13,8 @@ const config: PostgresConnectionOptions = {
   password: 'root',
   entities: [AuthenticationEntity,
              ScheduleMgt,
-             PatientPrescription],
+             PatientPrescription,
+             AppointmentList],
   synchronize: true,
 };
 

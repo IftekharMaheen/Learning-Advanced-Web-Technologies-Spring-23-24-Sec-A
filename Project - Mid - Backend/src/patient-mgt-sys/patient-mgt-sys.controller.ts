@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe, ParseIntPipe } from '@nestjs/common';
 import { PatientMgtSysService } from './patient-mgt-sys.service';
 import { CreatePatientPrescriptionDto } from './dto/create-patient-prescription.dto';
-import { UpdatePatientMgtSyDto } from './dto/update-patient-mgt-sy.dto';
 
 @Controller('patient-mgt-sys')
 export class PatientMgtSysController {
@@ -12,23 +11,9 @@ export class PatientMgtSysController {
     return this.patientMgtSysService.createPrescription(createPatientPrescriptionDto);
   }
 
-  @Get()
-  findAll() {
-    return this.patientMgtSysService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.patientMgtSysService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePatientMgtSyDto: UpdatePatientMgtSyDto) {
-    return this.patientMgtSysService.update(+id, updatePatientMgtSyDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.patientMgtSysService.remove(+id);
+  @Get('ViewAppointments/:doctor_id')
+  async getAppointments(@Param('doctor_id', ParseIntPipe) doctorId: number) {
+    const appointments = await this.patientMgtSysService.getAppointments(doctorId);
+    return appointments;
   }
 }
