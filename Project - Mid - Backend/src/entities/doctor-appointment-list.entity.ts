@@ -2,6 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
 export class AppointmentList {
+
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -22,4 +23,5 @@ export class AppointmentList {
 
     @Column({ default: 'queued'})
     appointment_status: string;
+    
 }

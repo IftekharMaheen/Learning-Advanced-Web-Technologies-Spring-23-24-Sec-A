@@ -7,6 +7,7 @@ import { ScheduleMgtModule } from './schedule-mgt/schedule-mgt.module';
 import { PatientMgtSysModule } from './patient-mgt-sys/patient-mgt-sys.module';
 import { DocFinancialsModule } from './doc-financials/doc-financials.module';
 import { RepMgtModule } from './rep-mgt/rep-mgt.module';
+import { MedicineListModule } from './medicine-list/medicine-list.module';
 import Ormconfig from 'ormconfig';
 
 @Module({
@@ -15,7 +16,8 @@ import Ormconfig from 'ormconfig';
             ScheduleMgtModule,
             PatientMgtSysModule,
             DocFinancialsModule,
-            RepMgtModule],
+            RepMgtModule,
+            MedicineListModule],
   controllers: [AppController],
   providers: [AppService],
 })

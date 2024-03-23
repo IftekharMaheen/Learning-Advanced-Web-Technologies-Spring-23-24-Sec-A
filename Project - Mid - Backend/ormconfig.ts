@@ -6,6 +6,7 @@ import { AppointmentList } from 'src/entities/doctor-appointment-list.entity';
 import { DocFinancials } from 'src/entities/doc-financial.entity';
 import { RepList } from 'src/entities/rep-list.entity';
 import { RepAppoitment } from 'src/entities/rep-appointment.entity';
+import { MedicineList } from 'src/entities/medicine-list.entity';
 
 const config: PostgresConnectionOptions = {
   type: 'postgres',
@@ -20,7 +21,8 @@ const config: PostgresConnectionOptions = {
              AppointmentList,
              DocFinancials,
              RepList,
-             RepAppoitment],
+             RepAppoitment,
+             MedicineList],
   synchronize: true,
 };
 
