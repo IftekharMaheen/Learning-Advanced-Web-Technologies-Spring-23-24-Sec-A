@@ -3,7 +3,7 @@ import { CreatePatientPrescriptionDto } from './dto/create-patient-prescription.
 import { InjectRepository } from '@nestjs/typeorm';
 import { PatientPrescription } from 'src/entities/patient-prescription.entity';
 import { AppointmentList } from 'src/entities/doctor-appointment-list.entity';
-import { Repository, getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class PatientMgtSysService {
