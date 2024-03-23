@@ -1,5 +1,5 @@
 import { ScheduleMgt } from 'src/entities/schedule-mgt.entity';
-import { AuthenticationEntity } from './src/auth/entities/auth.entity';
+import { AuthenticationEntity } from './src/entities/auth.entity';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { PatientPrescription } from 'src/entities/patient-prescription.entity';
 import { AppointmentList } from 'src/entities/doctor-appointment-list.entity';

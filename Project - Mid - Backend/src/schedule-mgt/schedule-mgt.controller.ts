@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { ScheduleMgtService } from './schedule-mgt.service';
 import { CreateScheduleMgtDto } from './dto/create-schedule-mgt.dto';
 import { UpdateScheduleMgtDto } from './dto/update-schedule-mgt.dto';
+import { Roles } from 'src/auth/roles.decorator';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('schedule-mgt')
 export class ScheduleMgtController {
@@ -12,6 +14,8 @@ export class ScheduleMgtController {
     return this.scheduleMgtService.createRepository(createScheduleMgtDto);
   }
 
+  @UseGuards(AuthGuard)
+  @Roles('Doctor')
   @Get('ShowAllSchedule')
   findAll() {
     return this.scheduleMgtService.findAll();
