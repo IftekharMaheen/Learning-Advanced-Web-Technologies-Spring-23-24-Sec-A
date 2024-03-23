@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ScheduleMgtModule } from './schedule-mgt/schedule-mgt.module';
 import { PatientMgtSysModule } from './patient-mgt-sys/patient-mgt-sys.module';
 import { DocFinancialsModule } from './doc-financials/doc-financials.module';
+import { RepMgtModule } from './rep-mgt/rep-mgt.module';
 import Ormconfig from 'ormconfig';
 
 @Module({
@@ -13,7 +14,8 @@ import Ormconfig from 'ormconfig';
             TypeOrmModule.forRoot(Ormconfig),
             ScheduleMgtModule,
             PatientMgtSysModule,
-            DocFinancialsModule],
+            DocFinancialsModule,
+            RepMgtModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -4,6 +4,8 @@ import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConne
 import { PatientPrescription } from 'src/entities/patient-prescription.entity';
 import { AppointmentList } from 'src/entities/doctor-appointment-list.entity';
 import { DocFinancials } from 'src/entities/doc-financial.entity';
+import { RepList } from 'src/entities/rep-list.entity';
+import { RepAppoitment } from 'src/entities/rep-appointment.entity';
 
 const config: PostgresConnectionOptions = {
   type: 'postgres',
@@ -16,7 +18,9 @@ const config: PostgresConnectionOptions = {
              ScheduleMgt,
              PatientPrescription,
              AppointmentList,
-             DocFinancials],
+             DocFinancials,
+             RepList,
+             RepAppoitment],
   synchronize: true,
 };
 
