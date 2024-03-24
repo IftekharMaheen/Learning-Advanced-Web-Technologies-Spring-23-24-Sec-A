@@ -31,6 +31,9 @@ export class MedicineList {
     med_status: string;
 
     @Column({ default: ' ' })
-    med_image: string;
+    med_image_original_name: string;
+
+    @Column({ default: ' ' })
+    med_image_file_name: string;
 
 }

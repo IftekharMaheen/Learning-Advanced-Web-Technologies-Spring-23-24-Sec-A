@@ -1,24 +1,43 @@
-import { IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
+import { IsEnum, IsNotEmpty, IsOptional, IsString } from "class-validator";
+
+export enum DocAppointmentStatus {
+    PENDING = 'pending',
+    CONFIRMED = 'confirmed',
+    CANCELLED = 'cancelled'
+}
 
 export class UpdateScheduleMgtDto {
     
-    @IsNotEmpty()
+    @ApiProperty({
+        example: '2024-03-11',
+        required: false
+      })
     @IsString()
     @IsOptional()
     schedule_date?: string;
-
-    @IsNotEmpty()
+    
+    @ApiProperty({
+        example: '20:00:00',
+        required: false
+      })
     @IsString()
     @IsOptional()
     schedule_start_time?: string;
 
-    @IsNotEmpty()
+    @ApiProperty({
+        example: '19:00:00',
+        required: false
+      })
     @IsString()
     @IsOptional()
     schedule_end_time?: string;
 
-    @IsNotEmpty()
-    @IsString()
+    @ApiProperty({ 
+        example: "pending|confirmed|cancelled",
+        required: false
+     })
+    @IsEnum(DocAppointmentStatus)
     @IsOptional()
     schedule_status?: string;
 

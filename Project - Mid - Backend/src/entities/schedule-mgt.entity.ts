@@ -15,7 +15,7 @@ export class ScheduleMgt {
     @Column()
     schedule_end_time: string;
 
-    @Column()
+    @Column({ default: 'confirmed' })
     schedule_status: string;
 
 }

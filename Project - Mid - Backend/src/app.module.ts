@@ -9,6 +9,7 @@ import { DocFinancialsModule } from './doc-financials/doc-financials.module';
 import { RepMgtModule } from './rep-mgt/rep-mgt.module';
 import { MedicineListModule } from './medicine-list/medicine-list.module';
 import Ormconfig from 'ormconfig';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [AuthModule, 
@@ -17,7 +18,10 @@ import Ormconfig from 'ormconfig';
             PatientMgtSysModule,
             DocFinancialsModule,
             RepMgtModule,
-            MedicineListModule],
+            MedicineListModule,
+            MulterModule.register({
+              dest: './uploads',
+            })],
   controllers: [AppController],
   providers: [AppService],
 })

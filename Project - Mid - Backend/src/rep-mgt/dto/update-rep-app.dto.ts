@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty } from 'class-validator';
 
 export enum AppStatus {
@@ -7,6 +8,10 @@ export enum AppStatus {
 
 export class UpdateRepAppDto {
     
+    @ApiProperty({ 
+        example: "confirmed|cancelled",
+        required: true
+    })
     @IsNotEmpty()
     @IsEnum(AppStatus)
     app_status: AppStatus;

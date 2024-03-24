@@ -4,6 +4,8 @@ import { UpdateMedicineListDto } from './dto/update-medicine-list.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MedicineList } from 'src/entities/medicine-list.entity';
 import { Repository } from 'typeorm';
+import { Express } from 'express';
+import * as Multer from 'multer';
 
 @Injectable()
 export class MedicineListService {
@@ -36,6 +38,23 @@ export class MedicineListService {
     else {
       return `Medicine ID: ${id} not found`;
     }
+  }
+
+  async uploadMedicineImg(id: number, file: Express.Multer.File): Promise<MedicineList> {
+    const medicineList = await this.medicineListRepository.findOne({ where: { med_id: id } });
+
+    if (!medicineList) {
+        throw new Error('Medicine not found');
+    }
+
+    medicineList.med_image_original_name = file.originalname;
+    medicineList.med_image_file_name = file.filename;
+
+    if (!file.filename) {
+        throw new Error('Filename is required');
+    }
+
+    return this.medicineListRepository.save(medicineList);
   }
 
 

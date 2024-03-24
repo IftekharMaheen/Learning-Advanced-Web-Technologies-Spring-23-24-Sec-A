@@ -1,4 +1,5 @@
-import { IsEnum, IsNotEmpty, IsOptional, IsPhoneNumber, IsString } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsPhoneNumber, IsString } from "class-validator";
 
 export enum RepStatus {
     VALID = 'valid',
@@ -7,30 +8,41 @@ export enum RepStatus {
 
 export class UpdateRepListDto {
 
+        @ApiProperty({
+            example: 'test@gmail.com',
+            required: true
+          })
         @IsOptional()
-        @IsString()
-        @IsNotEmpty()
-        rep_email: string;
+        @IsEmail()
+        rep_email?: string;
     
+        @ApiProperty({
+            example: '+880171167890',
+            required: false
+          })
         @IsOptional()
         @IsString()
-        @IsNotEmpty()
         @IsPhoneNumber('BD')
-        rep_phone: string;
+        rep_phone?: string;
     
+        @ApiProperty({
+            example: '100, Kuratoli, Dhaka',
+            required: false
+          })
         @IsOptional()
         @IsString()
-        @IsNotEmpty()
-        rep_address: string;
+        rep_address?: string;
     
+        @ApiProperty({
+            example: 'Square Pharma Limited',
+            required: false
+          })
         @IsOptional()
         @IsString()
-        @IsNotEmpty()
-        rep_company: string;
+        rep_company?: string;
     
         @IsOptional()
         @IsEnum(RepStatus)
-        @IsNotEmpty()
-        rep_status: RepStatus;
+        rep_status?: RepStatus;
 
 }

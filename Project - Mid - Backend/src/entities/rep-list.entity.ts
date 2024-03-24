@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from 'typeorm';
+import { RepAppoitment } from './rep-appointment.entity';
 
 @Entity()
 export class RepList {
@@ -26,5 +27,8 @@ export class RepList {
     
     @CreateDateColumn({ type: 'date' })
     rep_created: string;
+
+    @OneToMany(() => RepAppoitment, appointment => appointment.list)
+    appointments: RepAppoitment[];
 
 }

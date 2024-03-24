@@ -19,7 +19,7 @@ export class AuthController {
     return this.authService.signIn(logindata,req.session);
   }
 
-  //@UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Get('getUserData')
   getData():string {
     console.log("Test Test Test");
