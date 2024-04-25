@@ -1,4 +1,6 @@
 import Header from "../components/header";
+import Footer from "../components/footer";
+import './layout.css'; // import the CSS file
 
 export const metadata = {
     title: 'Employee Portal',
@@ -6,20 +8,21 @@ export const metadata = {
 }
 
 export default function RootLayout({
-    children,
-  }: {
-    children: React.ReactNode
-  }) {
-    return (
-      <html lang="en">
-        <body>
-          <header style={{backgroundColor: "lightgreen", padding: "5px"}}>
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <header>
           <Header/>
-          </header>
-          {children}
-          <footer style={{backgroundColor: "lightgray", padding: "5px"}}>Footer</footer>
-        </body>
-        
-      </html>
-    )
-  }
+        </header>
+        {children}
+        <footer>
+          <Footer/>
+        </footer>
+      </body>
+    </html>
+  )
+}

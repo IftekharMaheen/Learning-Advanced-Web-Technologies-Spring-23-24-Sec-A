@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../../public/image/logo.png';
+import './header.css'; // import the CSS file
 
 const Header = () => {
   return (
     <header>
       <nav>
-        <Image src={Logo} alt="Logo" width={50} height={50} />
+        <Link href="/">
+            <Image src={Logo} alt="Logo" width={50} height={50} />
+        </Link>
         <ul>
           <li>
             <Link href="/new">
@@ -22,7 +25,7 @@ const Header = () => {
             <Link href="/delete">
               Delete
             </Link>
-          </li>``
+          </li>
           <li>
             <Link href="/search">
               Search
@@ -32,6 +35,6 @@ const Header = () => {
       </nav>
     </header>
   );
-};
+}
 
 export default Header;

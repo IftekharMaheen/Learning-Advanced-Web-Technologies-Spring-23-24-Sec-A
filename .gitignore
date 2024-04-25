@@ -1,0 +1,16 @@
+# NestJS
+node_modules/
+dist/
+coverage/
+.env
+
+# Next.js
+.next/
+out/
+node_modules/
+.env
+
+# React
+build/
+node_modules/
+.env
