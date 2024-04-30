@@ -1,34 +1,47 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
+import { Roles } from 'src/decorators/roles.decorator';
+import { AuthGuard } from '../auth/guard/auth.guard';
+import { UseGuards } from '@nestjs/common';
 
 @Controller('customer')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
 
-  @Post()
-  create(@Body() createCustomerDto: CreateCustomerDto) {
-    return this.customerService.create(createCustomerDto);
+  @UseGuards(AuthGuard)
+  @Roles('admin')
+  @Post('CreateCustomer')
+  create(@Body(ValidationPipe) createCustomerDto: CreateCustomerDto) {
+    return this.customerService.createCustomer(createCustomerDto);
   }
 
-  @Get()
+  @UseGuards(AuthGuard)
+  @Roles('admin')
+  @Get('Customers/Views')
   findAll() {
-    return this.customerService.findAll();
+    return this.customerService.findAllCustomers();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.customerService.findOne(+id);
+  @UseGuards(AuthGuard)
+  @Roles('admin')  
+  @Get('Customers/View/:customerId')
+  findOnefindCustomerById(@Param('customerId') customerId:string) {
+    return this.customerService.findCustomerById(+customerId);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCustomerDto: UpdateCustomerDto) {
-    return this.customerService.update(+id, updateCustomerDto);
+  @UseGuards(AuthGuard)
+  @Roles('admin')
+  @Patch('Customers/Update/:customerId')
+  updateCustomerInfo(@Param('customerId') customerId: string, @Body(ValidationPipe) updateCustomerDto: UpdateCustomerDto) {
+    return this.customerService.updateCustomerInfo(+customerId, updateCustomerDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.customerService.remove(+id);
+  @UseGuards(AuthGuard)
+  @Roles('admin')
+  @Delete('Customers/Remove/:customerId')
+  removeCustomer(@Param('customerId') customerId: string) {
+    return this.customerService.removeCustomer(+customerId);
   }
 }
